@@ -1,0 +1,4 @@
+PAGINATION POUR LES PAGES DE TACHES
+AJOUTER LA PAGE VOIR LES DETAILS DANS SUIVI DE TACHES
+Lorsqu'on rentre une nombre aléatoire en GET (userid) afficher une erreur 404
+Lorsqu'on ajoute une tâche afficher la nouvelle après l'avoir crée.

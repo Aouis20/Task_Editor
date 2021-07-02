@@ -7,9 +7,27 @@
     <title>TT Manager One</title>
 </head>
 <body>
-    <?php require_once("tpl/header.php") ?>
-    <script>
-        alert('Choisissez un chiffre:')
-    </script>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="controllers/users.php">Liste de personne</a>
+                </li>
+                <li>
+                    <a href="controllers/tasks.php">Suivi des tâches</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <h1>Bienvenue !</h1>
+    </main>
+
+    <!-- Footer -->
+    <?php require_once("tpl/footer.php")?>
+
 </body>
 </html>

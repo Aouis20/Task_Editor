@@ -44,14 +44,18 @@ require_once('../models/create_task.php');
     <head>
         <meta charset="utf-8">
         <title>Tâche de l'utilisateur</title>
+        <style>
+            #addtask {
+                display:none
+            }
+        </style>
     </head>
     <body>
     <!-- HEADER -->
     <?php require_once('../tpl/header.php') ?>
 
     <!-- MAIN -->
-        <section>
-            
+        <main>
             <!-- user_info -->
             <h1><?= $user["first_name"] . " " . $user["last_name"] . " (n°" . $userid . ")"?></h1>
 
@@ -72,36 +76,44 @@ require_once('../models/create_task.php');
             <?php else: echo "Aucune tâches n'a été assigné, si vous le souhaitez, ajouter une tâche ici bas."?>
             <?php endif; ?>
 
+            <script src="../js/functions.js"></script>
+
+
             <!-- PLUS TASK -->
-            <h3>(+) Crée une tâche</h3>
-            <form method="POST">
-                <!-- Utilisateur -->
-                <label for="user_id">Utilisateur</label>
-                <select name="user_id" id="user_id" required>
-                    <?php foreach($persons as $person): ?>
-                        <option value="<?=$person["id"]?>"><?=$person["last_name"] . " " . $person["first_name"]?></option>
-                    <?php endforeach;?>
-                </select><br><br>
+            <h3>(+) Crée une tâche ?</h3>
+            <span onclick="open()">Ajouter une tâche</span>
 
-                <!-- Titre -->
-                <label for="title">Titre</label>
-                <input type="text" id="title" name="title" required/><br><br>
+            <!-- AddTask Form -->
+            <section id="addtask">
+                <form method="POST">
+                    <!-- Utilisateur -->
+                    <label for="user_id">Utilisateur</label>
+                    <select name="user_id" id="user_id" required>
+                        <?php foreach($persons as $person): ?>
+                            <option value="<?=$person["id"]?>"><?=$person["last_name"] . " " . $person["first_name"]?></option>
+                        <?php endforeach;?>
+                    </select><br><br>
 
-                <!-- Description -->
-                <label for="desc">Description</label><br>
-                <textarea name="desc" id="desc"></textarea><br><br>
+                    <!-- Titre -->
+                    <label for="title">Titre</label>
+                    <input type="text" id="title" name="title" required/><br><br>
 
-                <!-- Etat -->
-                <label for="status">Etat</label>
-                <select name="status" id="status" required>
-                    <option value="A faire">A faire</option>
-                    <option value="En cours">En cours</option>
-                    <option value="Fait">Fait</option>
-                </select><br><br>
-                
-                <input type="submit" value="Créer"/>
-            </form>
-        </section>
+                    <!-- Description -->
+                    <label for="desc">Description</label><br>
+                    <textarea name="desc" id="desc"></textarea><br><br>
+
+                    <!-- Etat -->
+                    <label for="status">Etat</label>
+                    <select name="status" id="status" required>
+                        <option value="A faire">A faire</option>
+                        <option value="En cours">En cours</option>
+                        <option value="Fait">Fait</option>
+                    </select><br><br>
+                    
+                    <input type="submit" value="Créer"/>
+                </form>
+            </section>
+        </main>
         <?php require_once('../tpl/footer.php') ?>
     </body>
 </html>

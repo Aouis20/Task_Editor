@@ -27,7 +27,7 @@
                     <td><?= ucwords(strtolower($user["first_name"])) ?></td>
                     <td><?= strtoupper($user["last_name"]) ?></td>
                     <td><?= $user["email"] ?></td>
-                    <td><a href="voir-user_tasks.php?userid=<?= $user["id"]?>">Voir les détails</a></td>
+                    <td><a href="details_user.php?userid=<?= $user["id"]?>">Voir les détails</a></td>
                 </tr>
                 <?php endforeach; ?>
             </table>

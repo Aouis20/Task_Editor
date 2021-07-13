@@ -33,22 +33,11 @@ $stmt->execute([
     "userid" => $userid
 ]);
 $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// User list
-require_once('../models/get_user_list.php');
-
-// Create Task
-require_once('../models/create_task.php');
 ?><!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Tâche de l'utilisateur</title>
-        <style>
-            #addtask {
-                display:none
-            }
-        </style>
     </head>
     <body>
     <!-- HEADER -->
@@ -68,7 +57,7 @@ require_once('../models/create_task.php');
                         <u><?=("Tâche n°" . $task["task_id"] . ":")?></u>
                         <strong><?=$task["title"] ?></strong>
                         <em><?= $task["task_status"] ?></em>
-                        <span>(-)</span>
+                        <span>(<a href="details_task.php?taskid=<?=$task["task_id"]?>">Voir les détails</a>)</span>
                     </li>
                     <p><?= $task["description"]?></p>
                 </ul>
@@ -76,43 +65,8 @@ require_once('../models/create_task.php');
             <?php else: echo "Aucune tâches n'a été assigné, si vous le souhaitez, ajouter une tâche ici bas."?>
             <?php endif; ?>
 
-            <script src="../js/functions.js"></script>
-
-
-            <!-- PLUS TASK -->
-            <h3>(+) Crée une tâche ?</h3>
-            <span onclick="open()">Ajouter une tâche</span>
-
-            <!-- AddTask Form -->
-            <section id="addtask">
-                <form method="POST">
-                    <!-- Utilisateur -->
-                    <label for="user_id">Utilisateur</label>
-                    <select name="user_id" id="user_id" required>
-                        <?php foreach($persons as $person): ?>
-                            <option value="<?=$person["id"]?>"><?=$person["last_name"] . " " . $person["first_name"]?></option>
-                        <?php endforeach;?>
-                    </select><br><br>
-
-                    <!-- Titre -->
-                    <label for="title">Titre</label>
-                    <input type="text" id="title" name="title" required/><br><br>
-
-                    <!-- Description -->
-                    <label for="desc">Description</label><br>
-                    <textarea name="desc" id="desc"></textarea><br><br>
-
-                    <!-- Etat -->
-                    <label for="status">Etat</label>
-                    <select name="status" id="status" required>
-                        <option value="A faire">A faire</option>
-                        <option value="En cours">En cours</option>
-                        <option value="Fait">Fait</option>
-                    </select><br><br>
-                    
-                    <input type="submit" value="Créer"/>
-                </form>
-            </section>
+            <!-- Add task -->
+            <?php require_once('create_task.php');?>
         </main>
         <?php require_once('../tpl/footer.php') ?>
     </body>

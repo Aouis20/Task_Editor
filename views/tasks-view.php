@@ -11,27 +11,9 @@
         <!-- MAIN -->
         <section>
             <h1>Suivi des tâches</h1>
-            <table border=1>
-                <tr>
-                    <th>Tâche id</th>
-                    <th>Utilisateur id</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Etat</th>
-                    <th>Détails</th>
-                </tr>
-                <?php foreach($tasks as $task): ?>
-                <tr>
-                    <td><?= $task["task_id"] ?></td>
-                    <td><a href="details_user.php?userid=<?= $task["user_id"] ?>">Uilisateur n°<?= $task["user_id"] ?></a></td>
-                    <td><?= $task["title"] ?></td>
-                    <td><?= $task["description"] ?></td>
-                    <td><?= $task["task_status"] ?></td>
-                    <td><a href="details_task.php?taskid=<?= $task["task_id"] ?>">Voir les détails</a></td>
-                </tr>
-                <?php endforeach; ?>
-            </table>
         </section>
+        <!-- Add task -->
+        <?php require_once('create_task.php'); ?>
         <?php require_once('../tpl/footer.php') ?>
     </body>
 </html>

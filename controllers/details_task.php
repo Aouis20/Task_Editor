@@ -38,13 +38,12 @@ $task = $stmt->fetch(PDO::FETCH_ASSOC); //unique fetch
             <?php if($task): ?>
                 <h1>Task n°(<?=$task["task_id"]?>)</h1>
                 <ul>
-                    <li>Task id:<?=$task["task_id"]?></li>
-                    <li>Utilisateur n°<?=$task["user_id"]?></li>
-                    <li><?= $task["title"]?></li>
+                    <a href="details_user.php?userid=<?= $task["user_id"]?>"><h3>Utilisateur n°<?=$task["user_id"]?></h3></a>
+                    <li><strong><?= $task["title"]?></strong></li>
                     <li><?=$task["description"]?></li>
-                    <li><?=$task["task_status"]?></li>
+                    <li><em><?=$task["task_status"]?></em></li>
                 </ul>
-            <?php else: echo "Aucune tâches n'a été assigné, si vous le souhaitez, ajouter une tâche ici bas."?>
+            <?php else: echo "La tâche que vous recherchez n'existe pas."?>
             <?php endif; ?>
         </section>
         <?php require_once('../tpl/footer.php') ?>

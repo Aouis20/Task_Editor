@@ -2,7 +2,7 @@
 $stmt = $pdo->prepare("
 SELECT *
 FROM users
-ORDER BY last_name
+ORDER BY id
 ");
 $stmt->execute();
 $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);

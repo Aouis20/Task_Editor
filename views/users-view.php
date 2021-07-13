@@ -32,6 +32,8 @@
                 <?php endforeach; ?>
             </table>
         </section>
+        <!-- Add user -->
+        <?php require_once('create_user.php'); ?>
         <?php require_once('../tpl/footer.php') ?>
     </body>
 </html>
